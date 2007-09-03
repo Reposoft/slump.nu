@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: Verdana, sans-serif;
+}
+#manual {
+	font-family: serif;
+	font-size: 1.1em;	
+}
+h2 {
+	color: maroon;
+}

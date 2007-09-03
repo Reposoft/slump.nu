@@ -7,23 +7,42 @@
 <script type="text/javascript" src="jquery-1.1.3.1.js"></script>
 <script type="text/javascript" src="slump.js"></script>
 <script type="text/javascript" src="mailto.js"></script>
+<link type="text/css" rel="stylesheet" href="plain.css"></link>
+<!-- alternative stylesheets -->
+
 </head>
 <body>
 
-<h1>Slump</h1>
+<h1 id="pagetitle">Slump</h1>
 
+<div id="randomletters">
 <h2>Bokstäver</h2>
-<p><span class="result slump_string" title="sträng med 8 tecken"></span></p>
-<p><input type="text" class="result slump_string" maxlength="8" title="lämpligt som lösenord"></input></p>
+<p class="text"><span class="result slump_string" title="sträng med 50 tecken"></span></p>
+<p class="select"><input type="text" class="result slump_string" maxlength="8" title="lämpligt som lösenord"></input></p>
+</div>
 
-<h2>Tal</h2>
-<p><span class="slump_number" title="ett nummer under 1000"></span></p>
-<p><input type="text" class="result slump_number" maxlength="3" title="max tre siffror"></input></p>
+<div id="randomnumbers">
+<h2>Siffror</h2>
+<p class="text"><span class="slump_number" title="ett nummer under 1000000000000 (1 biljon)"></span></p>
+<p class="select"><input type="text" class="result slump_number" maxlength="3" title="max tre siffror"></input></p>
+</div>
 
-<p><a id="refresh" href="javascript:window.location.reload(true)">igen</a></p>
+<div id="commandbar"><a id="refresh" href="javascript:window.location.reload(true)">igen</a></div>
 
+<div id="manual">
+<p>Slumpmässiga strängar är användbara som lösenord där man sällan loggar in.
+Bättre än standardlösenord i alla fall.
+Använder du samma lösenord på flera ställen så räcker det att det hamnar i fel händer på någon tjänsterna
+för att du ska riskera att få andra konton knäckta.
+Loggar du in oregelbundet och inte ens en gång i månaden kan det vara bättre att sätta en lång slumpmässig sekvens
+och sen använda funktionen "glömt lösenordet" som finns på de flesta tjänster.
+Slumpsekvenserna på den här sidan genereras i din webbläsare och skickas alltså inte över Internet.
+</div>
+
+<div id="footer">
 <p><small>Hjälp till att styla den här sidan. 
-Bygg en CSS och skicka till <a class="mailto" href="#mail to info at this domain">utvecklaren</a></small></p>
+Bygg en CSS och skicka till <a class="mailto" href="#mail to info at this domain">utvecklaren</a>.</small></p>
+</div>
 
 </body>
 </html>
