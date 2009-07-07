@@ -5,8 +5,23 @@ body {
 }
 #manual {
 	font-family: serif;
-	font-size: 1.1em;	
+	font-size: 1.1em;
+	width: 80%;
+	padding-top: 1em;
 }
 h2 {
 	color: maroon;
+}
+
+#selection ul {
+	list-style: none;	
+}
+
+#selection li {
+	display: inline;
+	margin-right: 1em;
+}
+
+input.invalid {
+	border-color: red;	
 }
