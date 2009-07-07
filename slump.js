@@ -1,18 +1,6 @@
 /* (c) 2009 Staffan Olsson optime.se */
 
-$().ready( function() {
-	$('span.slump_string').each( function() {
-		$(this).text(slump_string($(this).attr('title').match(/(\d+)/)[1]));
-	} );
-	$('span.slump_number').each( function() {
-		$(this).text(''+slump_number($(this).attr('title').match(/(\d+)/)[1]));
-	} );
-	$('input.slump_string').each( function() {
-		$(this).val(slump_string($(this).attr('maxlength')));
-	} );
-	$('input.slump_number').each( function() {
-		$(this).val(''+slump_number(Math.pow(10, $(this).attr('maxlength'))));
-	} );
+$().ready(function() {
 	$('#selection input').keyup(function() {
 		var options = {};
 		$('#selection input').each(function() {
@@ -25,7 +13,10 @@ $().ready( function() {
 		if (options.to < options.from) $('#selection from, #selection to').addClass('invalid');
 		if ($('#selection input.invalid').size() == 0) slump_selection(options);
 	} );
-	$('#selection input:first').trigger('keyup').trigger('change');
+	$('#refresh').click(function() {
+		slump_run();
+	});
+	slump_run();
 } );
 
 $().ready( function() {
@@ -33,6 +24,22 @@ $().ready( function() {
 		this.select();
 	} );
 } );
+
+function slump_run() {
+	$('span.slump_string').each( function() {
+		$(this).text(slump_string($(this).attr('title').match(/(\d+)/)[1]));
+	} );
+	$('span.slump_number').each( function() {
+		$(this).text(''+slump_number($(this).attr('title').match(/(\d+)/)[1]));
+	} );
+	$('input.slump_string').each( function() {
+		$(this).val(slump_string($(this).attr('maxlength')));
+	} );
+	$('input.slump_number').each( function() {
+		$(this).val(''+slump_number(Math.pow(10, $(this).attr('maxlength'))));
+	} );
+	$('#selection input:first').trigger('keyup').trigger('change');
+}
 
 function slump_number(below) {
 	return Math.floor(Math.random() * below);
