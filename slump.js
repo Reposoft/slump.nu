@@ -13,13 +13,14 @@ $().ready( function() {
 	$('input.slump_number').each( function() {
 		$(this).val(''+slump_number(Math.pow(10, $(this).attr('maxlength'))));
 	} );
-	$('#selection input').change(function() {
+	$('#selection input').keyup(function() {
 		var options = {};
 		$('#selection input').each(function() {
 			var f = $(this).removeClass('invalid');
+			var n = f.attr('name');
 			var v = f.val();
 			if (!v) f.addClass('invalid');
-			options[f.attr('name')] = parseInt(v);
+			options[n] = parseInt(v);
 		});
 		if (options.to < options.from) $('#selection from, #selection to').addClass('invalid');
 		if ($('#selection input.invalid').size() == 0) slump_selection(options);
