@@ -60,7 +60,7 @@ function slump_selection(options) {
 		if (!options.unique || s.indexOf(n) == -1) s.push(n);
 	}
 	s.sort();
-	for (i in s) {
+	for (i = 0; i < s.length; i++) {
 		var n = s[i];
 		$('<li/>').text(n).appendTo(list);
 	}
