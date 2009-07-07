@@ -35,14 +35,14 @@ $().ready( function() {
 
 function slump_number(below) {
 	return Math.floor(Math.random() * below);
-};
+}
 
 function slump_string(length) {
 	var readable = '23456789abcdefghijkmnpqrstuwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
 	var s = '';
 	for (i=0; i<length; i++) s += readable.charAt(slump_number(readable.length));
 	return s;
-};
+}
 
 function slump_selection(options) {
 	var defaults = {
@@ -64,11 +64,11 @@ function slump_selection(options) {
 		var n = s[i];
 		$('<li/>').text(n).appendTo(list);
 	}
-};
+}
 
 if (!Array.prototype.indexOf)
 {
-  Array.prototype.indexOf = function(elt /*, from*/)
+  Array.prototype.indexOf = function(elt)
   {
     var len = this.length >>> 0;
 
