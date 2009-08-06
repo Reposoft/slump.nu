@@ -39,6 +39,8 @@ function slump_run() {
 		$(this).val(''+slump_number(Math.pow(10, $(this).attr('maxlength'))));
 	} );
 	$('#selection input:first').trigger('keyup').trigger('change');
+	// Frukt
+	dice();
 }
 
 function slump_number(below) {
@@ -85,3 +87,34 @@ if(!Array.indexOf){
     };
 }
 
+function dice() {
+	var opt = {
+		img: '#frukt img:first',
+		path: 'Frukt',
+		images: ['apple.JPG', 'banana.JPG', 'cherries.JPG', 'grapes.JPG', 'pear.JPG'],
+		// delay between image switch, returns 0 when done
+		time: function(n) {
+			if (n > 50) return 0;
+			return n * 3 + slump_number(30);
+		}
+	};
+	
+	var cache = [];
+	for (var i=0; i<opt.images.length; i++) {
+		cache[i] = new Image();
+		cache[i].src = opt.path + '/' + opt.images[i];
+	}
+
+	// apply to page
+	$().ready(function() {
+		var img = $(opt.img);
+		var n = 0;
+		var next = function() {
+			var c = cache[slump_number(cache.length)];
+			img.attr('src', c.src);
+			var t = opt.time(n++);
+			if (t > 0) setTimeout(next, t);
+		};
+		next();
+	});
+};
