@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: Verdana, sans-serif;
+}
+#manual {
+	font-family: serif;
+	font-size: 1.1em;
+	width: 30em;
+	padding-top: 1em;
+}
+h2 {
+	color: maroon;
+}
+
+#selection ul {
+	list-style: none;	
+}
+
+#selection li {
+	display: inline;
+	margin-right: 1em;
+}
+
+input.invalid {
+	border-color: red;	
+}
