@@ -25,3 +25,10 @@ h2 {
 input.invalid {
 	border-color: red;	
 }
+
+#frukt {
+	position: absolute;
+	z-index: 1;
+	top: 50px;
+	right: 50px;	
+}
