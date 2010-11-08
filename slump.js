@@ -54,12 +54,12 @@ function slump_selection_form_change() {
 		if (f.attr('type') == 'checkbox') {
 			options[n] = f.is(':checked');
 		} else {
-			options[n] = parseInt(v);
+			options[n] = parseInt(v, 10);
 		}
 	});
 	if (options.to < options.from) $('#selection from, #selection to').addClass('invalid');
-	if ($('#selection input.invalid').size() == 0) slump_selection(options);
-};
+	if (!$('#selection input.invalid').size()) slump_selection(options);
+}
 
 function slump_selection(options) {
 	var defaults = {
@@ -71,16 +71,17 @@ function slump_selection(options) {
 		$('#selection input').addClass('invalid');
 		return;
 	}
+	var n;
 	var s = [];
 	while (s.length < options.hits) {
-		var n = slump_number(options.to - options.from + 1) + options.from;
+		n = slump_number(options.to - options.from + 1) + options.from;
 		if (!options.unique || s.indexOf(n) == -1) s.push(n);
 	}
 	if (options.ascending) {
 		s.sort(function(a,b){return a-b;});
 	}
 	for (i = 0; i < s.length; i++) {
-		var n = s[i];
+		n = s[i];
 		$('<li/>').text(n).appendTo(list);
 	}
 }
@@ -126,4 +127,4 @@ function dice() {
 		};
 		next();
 	});
-};
+}
