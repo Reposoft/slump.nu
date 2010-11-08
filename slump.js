@@ -1,18 +1,8 @@
 /* (c) 2009 Staffan Olsson optime.se */
 
 $().ready(function() {
-	$('#selection input').keyup(function() {
-		var options = {};
-		$('#selection input').each(function() {
-			var f = $(this).removeClass('invalid');
-			var n = f.attr('name');
-			var v = f.val();
-			if (!v) f.addClass('invalid');
-			options[n] = parseInt(v);
-		});
-		if (options.to < options.from) $('#selection from, #selection to').addClass('invalid');
-		if ($('#selection input.invalid').size() == 0) slump_selection(options);
-	} );
+	$('#selection input').keyup(slump_selection_form_change);
+	$('#selection input:checkbox').click(slump_selection_form_change);
 	$('#refresh').click(function() {
 		slump_run();
 	});
@@ -54,6 +44,23 @@ function slump_string(length) {
 	return s;
 }
 
+function slump_selection_form_change() {
+	var options = {};
+	$('#selection input').each(function() {
+		var f = $(this).removeClass('invalid');
+		var n = f.attr('name');
+		var v = f.val();
+		if (!v) f.addClass('invalid');
+		if (f.attr('type') == 'checkbox') {
+			options[n] = f.is(':checked');
+		} else {
+			options[n] = parseInt(v);
+		}
+	});
+	if (options.to < options.from) $('#selection from, #selection to').addClass('invalid');
+	if ($('#selection input.invalid').size() == 0) slump_selection(options);
+};
+
 function slump_selection(options) {
 	var defaults = {
 		unique: true	
@@ -69,7 +76,9 @@ function slump_selection(options) {
 		var n = slump_number(options.to - options.from + 1) + options.from;
 		if (!options.unique || s.indexOf(n) == -1) s.push(n);
 	}
-	s.sort(function(a,b){return a-b;});
+	if (options.ascending) {
+		s.sort(function(a,b){return a-b;});
+	}
 	for (i = 0; i < s.length; i++) {
 		var n = s[i];
 		$('<li/>').text(n).appendTo(list);
