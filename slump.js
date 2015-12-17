@@ -63,7 +63,7 @@ function slump_selection_form_change() {
 
 function slump_selection(options) {
 	var defaults = {
-		unique: true	
+		unique: true
 	};
 	$.extend(options, defaults);
 	var list = $('#selection .result').empty();
@@ -108,7 +108,7 @@ function dice() {
 			return n * 3 + slump_number(30);
 		}
 	};
-	
+
 	var cache = [];
 	for (var i=0; i<opt.images.length; i++) {
 		cache[i] = new Image();

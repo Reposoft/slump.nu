@@ -14,7 +14,7 @@ h2 {
 }
 
 #selection ul {
-	list-style: none;	
+	list-style: none;
 }
 
 #selection li {
@@ -23,12 +23,12 @@ h2 {
 }
 
 input.invalid {
-	border-color: red;	
+	border-color: red;
 }
 
 #frukt {
 	position: absolute;
 	z-index: 1;
 	top: 50px;
-	right: 50px;	
+	right: 50px;
 }
