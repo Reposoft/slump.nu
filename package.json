@@ -14,5 +14,11 @@
   "bugs": {
     "url": "https://github.com/Reposoft/slump.nu/issues"
   },
-  "homepage": "https://github.com/Reposoft/slump.nu#readme"
+  "homepage": "https://github.com/Reposoft/slump.nu#readme",
+  "devDependencies": {
+    "webpack": "^1.12.9"
+  },
+  "dependencies": {
+    "node-uuid": "^1.4.7"
+  }
 }
